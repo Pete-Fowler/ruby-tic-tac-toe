@@ -1,6 +1,6 @@
-require '../lib/tic_tac_toe'
+require_relative '../lib/tic_tac_toe'
 
-RSpec.describe tic_tac_toe do
+RSpec.describe Game do
   describe "Game class #initialize" do
     it "creates an array of 9 1 space strings and has an @board attr" do
       game = Game
