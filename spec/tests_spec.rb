@@ -15,5 +15,17 @@ describe Game do
     end
   end 
 
-  
+  describe "#print_board" do 
+    it "prints current state of gameboard" do 
+      board = [[" ", "X", " ", " ", " ", " ", " ", " ", "O"]]
+      output = ["  | X |  ", 
+                "---------", 
+                "  |   |  ", 
+                "---------",
+                "  |   | O"
+      ].join("\n")
+      expect(game.print_board).to output(output)
+    end
+  end 
+
 end
