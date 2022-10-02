@@ -39,7 +39,7 @@ describe Game do
     end
   end 
 
-  describe "position_taken?" do 
+  describe "#position_taken?" do 
     it "Returns true/false whether the position is taken" do 
       game.board = ["O", " ", "O", "X", "O", "X", "O", "X", "O"]
 
@@ -47,4 +47,16 @@ describe Game do
       expect(game.position_taken?(1)).to eq(false)
     end
   end
+
+  describe "#valid_move?" do 
+    it "Returns true if position not taken and move is on board" do 
+      game.board = ["O", " ", "O", "X", "O", "X", "O", "X", "O"]
+
+      expect(game.valid_move?(1)).to eq(true)
+      expect(game.valid_move?(2)).to eq(false)
+      expect(game.valid_move?(9)).to eq(false)
+      expect(game.valid_move?(-1)).to eq(false)
+
+    end 
+  end 
 end
