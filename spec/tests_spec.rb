@@ -86,9 +86,7 @@ describe Game do
 
   describe "#turn" do 
     it "Asks the user for their move" do 
-      $stdout = StringIO.new
-      game.turn
-      $stdout.rewind
+      capture(game.turn)
       expect($stdout.gets).to eq("X - enter a move using 1-9\n")
     end 
 
