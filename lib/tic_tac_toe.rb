@@ -30,5 +30,15 @@ class Game
     position_taken?(int) == false && int.between?(0, 8) == true
   end 
 
-  
+  # the count is the number of turns played
+  def turn_count 
+    i = 0
+    board.each do |position| 
+      if position != ' '
+        i += 1
+      end 
+    end 
+    i
+  end 
+
 end
