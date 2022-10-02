@@ -38,4 +38,13 @@ describe Game do
       expect(game.input_to_index(3)).not_to eq(3)
     end
   end 
+
+  describe "position_taken?" do 
+    it "Returns true/false whether the position is taken" do 
+      game.board = ["O", " ", "O", "X", "O", "X", "O", "X", "O"]
+
+      expect(game.position_taken?(3)).to eq(true)
+      expect(game.position_taken?(1)).to eq(false)
+    end
+  end
 end
