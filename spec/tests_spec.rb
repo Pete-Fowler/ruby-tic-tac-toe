@@ -17,15 +17,19 @@ describe Game do
 
   describe "#print_board" do 
     it "prints current state of gameboard" do 
-      board = [[" ", "X", " ", " ", " ", " ", " ", " ", "O"]]
-      output = ["  | X |  ", 
-                "---------", 
-                "  |   |  ", 
-                "---------",
-                "  |   | O"
-      ].join("\n")
-      expect(game.print_board).to output(output)
+      game.board = ["O", "X", "O", "X", "O", "X", "O", "X", "O"]
+      
+      $stdout = StringIO.new
+      game.print_board
+      $stdout.rewind
+
+      expect($stdout.gets).to eq(" O | X | O \n")
+      expect($stdout.gets).to eq("-----------\n")
+      expect($stdout.gets).to eq(" X | O | X \n")
+      expect($stdout.gets).to eq("-----------\n")
+      expect($stdout.gets).to eq(" O | X | O \n")
+
     end
-  end 
+  end
 
 end
