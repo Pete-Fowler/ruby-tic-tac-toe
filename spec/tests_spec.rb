@@ -28,8 +28,14 @@ describe Game do
       expect($stdout.gets).to eq(" X | O | X \n")
       expect($stdout.gets).to eq("-----------\n")
       expect($stdout.gets).to eq(" O | X | O \n")
-
     end
   end
 
+  describe "#input_to_index" do 
+    it "takes player input and subtracts one for array index" do 
+      expect(game.input_to_index(5)).to eq(4)
+      expect(game.input_to_index(2)).to eq(1)
+      expect(game.input_to_index(3)).not_to eq(3)
+    end
+  end 
 end
