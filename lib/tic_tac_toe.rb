@@ -45,4 +45,7 @@ class Game
     turn_count.even? ? 'X' : 'O'
   end
 
+  def turn 
+    puts "#{current_player} - enter a move using 1-9"
+  end 
 end
