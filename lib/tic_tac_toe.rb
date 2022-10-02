@@ -41,4 +41,8 @@ class Game
     i
   end 
 
+  def current_player 
+    turn_count.even? ? 'X' : 'O'
+  end
+
 end

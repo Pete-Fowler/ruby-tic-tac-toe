@@ -67,7 +67,21 @@ describe Game do
      
       game.board = ["O", " ", "O", "X", " ", " ", " ", " ", " "]
       expect(game.turn_count).to eq(3)
-
     end 
   end 
+
+  describe "#current_player" do 
+    it "Returns X or O depending on turn_count" do 
+      game.board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+      expect(game.current_player).to eq('X')
+
+      game.board = [" ", "X", " ", " ", " ", " ", " ", " ", " "]
+      expect(game.current_player).to eq('O')
+
+     
+      game.board = ["O", " ", "O", "X", "X", "O", "X", "O", "X"]
+      expect(game.current_player).to eq('X')
+    end 
+  end 
+
 end
