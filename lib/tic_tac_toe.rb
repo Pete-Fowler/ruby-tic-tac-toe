@@ -29,4 +29,6 @@ class Game
   def valid_move?(int) 
     position_taken?(int) == false && int.between?(0, 8) == true
   end 
+
+  
 end

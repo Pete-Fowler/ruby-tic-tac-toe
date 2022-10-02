@@ -59,4 +59,15 @@ describe Game do
 
     end 
   end 
+
+  describe "#turn_count" do 
+    it "Returns turn count based on board" do 
+      game.board = ["O", " ", "O", "X", "O", "X", "O", "X", "O"]
+      expect(game.turn_count).to eq(8)
+     
+      game.board = ["O", " ", "O", "X", " ", " ", " ", " ", " "]
+      expect(game.turn_count).to eq(3)
+
+    end 
+  end 
 end
