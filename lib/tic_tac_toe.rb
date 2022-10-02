@@ -20,6 +20,8 @@ class Game
     int - 1
   end
 
-  
+  def position_taken?(int) 
+    board[int] != ' '
+  end
 
 end
