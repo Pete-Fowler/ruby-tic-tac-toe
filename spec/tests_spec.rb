@@ -97,14 +97,12 @@ describe 'Game' do
   describe '#turn' do
 
     it 'receives user input via the gets method' do
-      allow($stdout).to receive(:puts)
       expect(game).to receive(:gets).and_return("1")
 
       game.turn
     end
 
     it "calls #input_to_index, #valid_move?, and #current_player" do
-      allow($stdout).to receive(:puts)
       expect(game).to receive(:gets).and_return("5")
       expect(game).to receive(:input_to_index).and_return(4)
       expect(game).to receive(:valid_move?).and_return(true)
@@ -114,7 +112,6 @@ describe 'Game' do
     end
 
     it 'makes valid moves and displays the board' do
-      allow($stdout).to receive(:puts)
       expect(game).to receive(:gets).and_return("1")
       expect(game).to receive(:print_board)
 
@@ -125,9 +122,6 @@ describe 'Game' do
     end
 
     it 'asks for input again after a failed validation' do
-      game = Game.new
-      allow($stdout).to receive(:puts)
-
       expect(game).to receive(:gets).and_return("invalid")
       expect(game).to receive(:gets).and_return("1")
 
