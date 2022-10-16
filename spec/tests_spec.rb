@@ -42,6 +42,7 @@ describe Game do
   describe "#move" do 
     it "takes an index and token, and records a player's move on the board" do 
       game.move(1, 'X') 
+      puts game.board 
       expect(game.board[1]).to eq('X') 
       expect(game.board[0]).to eq('')
       expect(game.board[2]).to eq('') 
