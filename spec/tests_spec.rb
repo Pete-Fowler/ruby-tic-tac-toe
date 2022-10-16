@@ -142,7 +142,7 @@ describe Game do
     end
   end 
 
-  describe '#full' do 
+  describe '#full?' do 
     it 'returns true if every spot is taken' do 
       game.board = ["X", "O", "X", "O", "X", "O", "O", "X", "X"]
       expect(game.full?).to be_truthy 
