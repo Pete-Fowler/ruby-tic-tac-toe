@@ -39,6 +39,15 @@ describe Game do
     end
   end 
 
+  describe "#move" do 
+    it "takes an index and token, and records a player's move on the board" do 
+      game.move(1, 'X') 
+      expect(game.board[1]).to eq('X') 
+      expect(game.board[0]).to eq('')
+      expect(game.board[2]).to eq('') 
+    end 
+  end 
+
   describe "#position_taken?" do 
     it "Returns true/false whether the position is taken" do 
       game.board = ["O", " ", "O", "X", "O", "X", "O", "X", "O"]

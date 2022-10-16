@@ -22,6 +22,10 @@ class Game
     int - 1
   end
 
+  def move(index, token)
+    
+  end 
+
   def position_taken?(int) 
     board[int] != ' '
   end
@@ -46,6 +50,9 @@ class Game
   end
 
   def turn 
-    puts "#{current_player} - enter a move using 1-9"
+    puts "#{current_player} - enter a move using 1-9" 
+    input = gets
+    move = input_to_index(input) 
+    # valid_move?(move) ? 
   end 
 end
