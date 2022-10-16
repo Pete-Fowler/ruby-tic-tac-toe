@@ -1,6 +1,6 @@
 require_relative '../lib/tic_tac_toe'
 
-describe Game do
+describe 'Game' do
   let(:game) { Game.new }
 
   describe "Game class #initialize" do
@@ -94,14 +94,45 @@ describe Game do
     end 
   end 
 
-  describe "#turn" do 
-    it "Asks the user for their move" do 
-      $stdout = StringIO.new
-      game.turn
-      $stdout.rewind
-      expect($stdout.gets).to eq("X - enter a move using 1-9\n")
-    end 
-  end 
+  describe '#turn' do
 
+    it 'receives user input via the gets method' do
+      allow($stdout).to receive(:puts)
+      expect(game).to receive(:gets).and_return("1")
+
+      game.turn
+    end
+
+    it "calls #input_to_index, #valid_move?, and #current_player" do
+      allow($stdout).to receive(:puts)
+      expect(game).to receive(:gets).and_return("5")
+      expect(game).to receive(:input_to_index).and_return(4)
+      expect(game).to receive(:valid_move?).and_return(true)
+      expect(game).to receive(:current_player).and_return("X")
+
+      game.turn
+    end
+
+    it 'makes valid moves and displays the board' do
+      allow($stdout).to receive(:puts)
+      expect(game).to receive(:gets).and_return("1")
+      expect(game).to receive(:print_board)
+
+      game.turn
+
+      board = game.instance_variable_get(:@board)
+      expect(board).to eq(["X", " ", " ", " ", " ", " ", " ", " ", " "])
+    end
+
+    it 'asks for input again after a failed validation' do
+      game = Game.new
+      allow($stdout).to receive(:puts)
+
+      expect(game).to receive(:gets).and_return("invalid")
+      expect(game).to receive(:gets).and_return("1")
+
+      game.turn
+    end
+  end
   
 end

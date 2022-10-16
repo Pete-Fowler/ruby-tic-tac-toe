@@ -46,13 +46,20 @@ class Game
   end 
 
   def current_player 
-    turn_count.even? ? 'X' : 'O'
+    turn_count.even? ? "X" : "O"
   end
 
   def turn 
-    puts "#{current_player} - enter a move using 1-9" 
-    input = gets
-    move = input_to_index(input) 
-    # valid_move?(move) ? 
+    token = current_player
+    puts "#{token} - enter a move using 1-9" 
+    user_input = gets.chomp.to_i 
+    move = input_to_index(user_input) 
+    if valid_move?(move)
+      move(move, token)
+      print_board
+    else 
+      turn
+    end
   end 
+
 end
