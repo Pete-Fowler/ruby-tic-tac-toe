@@ -1,6 +1,6 @@
 require_relative '../lib/tic_tac_toe'
 
-describe 'Game' do
+describe Game do
   let(:game) { Game.new }
 
   describe "Game class #initialize" do
@@ -117,8 +117,7 @@ describe 'Game' do
 
       game.turn
 
-      board = game.instance_variable_get(:@board)
-      expect(board).to eq(["X", " ", " ", " ", " ", " ", " ", " ", " "])
+      expect(game.board).to eq(["X", " ", " ", " ", " ", " ", " ", " ", " "])
     end
 
     it 'asks for input again after a failed validation' do
@@ -131,14 +130,16 @@ describe 'Game' do
 
   describe '#won' do 
     it 'returns false for no win combination' do 
-      board = ["X", "O", "X", 
-              "X", "X", "O", 
-              "O", "O", "X"]
-    game.instance_variable_set(:board, board) 
-
+      game.board = ["O", "O", "X", 
+                    "X", "X", "O", 
+                    "O", "O", "X"]
     expect(game.won?).to be_falsey 
-    
     end 
+
+    it 'returns the winning combo for a win' do
+      game.board = ["X", "O", "X", "O", "X", "O", "O", "X", "X"]
+      expect(game.won?).to contain_exactly(0,4,8)
+    end
   end 
   
 end
