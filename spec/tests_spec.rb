@@ -91,7 +91,6 @@ describe Game do
       $stdout.rewind
       expect($stdout.gets).to eq("X - enter a move using 1-9\n")
     end 
-    
   end 
 
   
