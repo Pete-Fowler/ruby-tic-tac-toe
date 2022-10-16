@@ -128,5 +128,17 @@ describe 'Game' do
       game.turn
     end
   end
+
+  describe '#won' do 
+    it 'returns false for no win combination' do 
+      board = ["X", "O", "X", 
+              "X", "X", "O", 
+              "O", "O", "X"]
+    game.instance_variable_set(:board, board) 
+
+    expect(game.won?).to be_falsey 
+    
+    end 
+  end 
   
 end
