@@ -72,4 +72,10 @@ class Game
     return false
   end 
 
+  def full?
+    @board.none? do |el| 
+      el == ' '
+    end 
+  end 
+
 end

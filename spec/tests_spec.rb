@@ -145,11 +145,11 @@ describe Game do
   describe '#full' do 
     it 'returns true if every spot is taken' do 
       game.board = ["X", "O", "X", "O", "X", "O", "O", "X", "X"]
-      expect(game.won?)to be_truthy 
+      expect(game.full?).to be_truthy 
     end 
     it 'returns false if every spot is not taken' do 
       game.board = ["X", " ", "X", "O", "X", "O", "O", "X", "X"]
-      expect(game.won?)to be_falsey
+      expect(game.full?).to be_falsey
     end 
   end 
 
