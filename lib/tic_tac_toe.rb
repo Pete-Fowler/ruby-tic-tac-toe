@@ -78,4 +78,12 @@ class Game
     end 
   end 
 
+  def draw? 
+    if won? == false && full? == true 
+      return true 
+    else
+      return false
+    end 
+  end 
+
 end
