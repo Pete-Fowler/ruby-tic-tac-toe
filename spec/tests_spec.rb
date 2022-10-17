@@ -11,7 +11,7 @@ describe Game do
 
   describe "WIN_COMBOS" do 
     it "has a class constant of all win combos" do 
-      expect(Game::WIN_COMBOS).to eq([[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 4, 8], [2, 4, 6]])
+      expect(Game::WIN_COMBOS).to eq([[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 4, 8], [2, 4, 6], [0, 3, 6], [1, 4, 7], [2, 5, 8]])
     end
   end 
 
@@ -175,5 +175,25 @@ describe Game do
         expect(game.draw?).to be_falsey
     end 
   end 
+
+  describe '#winner' do
+    it 'return X when X won' do
+      game.board = ["X", "O", "O", " ", "X", " ", " ", " ", "X"]
+
+      expect(game.winner).to eq("X")
+    end
+
+    it 'returns O when O won' do
+      game.board = ["X", "O", "X", " ", "O", " ", " ", "O", "X"]
+
+      expect(game.winner).to eq("O")
+    end
+
+    it 'returns nil when no winner' do
+      game.board = ["X", "O", " ", " ", " ", " ", " ", "O", "X"]
+
+      expect(game.winner).to be_nil
+    end
+  end
 
 end
