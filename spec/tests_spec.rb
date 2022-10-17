@@ -153,4 +153,27 @@ describe Game do
     end 
   end 
 
+  describe '#draw?' do 
+    it 'returns true if the board is full and game is not won' do 
+      game.board = ["O", "O", "X", 
+                    "X", "X", "O", 
+                    "O", "O", "X"]
+      expect(game.draw?).to be_truthy 
+    end 
+    it 'returns false if the board is not full or full and not won' do 
+      game.board = 
+        ["O", "O", " ", 
+        "X", "X", "O", 
+        "O", "O", "X"]
+
+        expect(game.draw?).to be_falsey 
+
+        game.board = ["O", "O", "X", 
+                      "X", "X", "O", 
+                      "X", "O", "O"]
+
+        expect(game.draw?).to be_falsey
+    end 
+  end 
+
 end
